@@ -1,0 +1,1156 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>紫芳庵 - 会員制料亭</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600&family=Hiragino+Sans:wght@300;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --content-width: 1440px;
+            --content-padding: 220px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            width: 100%;
+            min-width: var(--content-width);
+            margin: 0;
+            padding: 0;
+            font-family: 'Shippori Mincho', serif;
+            color: #000000;
+            background-color: #FFFFFF;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* ヘッダー */
+        header {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 589px;
+            background-color: #000000;
+            height: 72px;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .header-content {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 39px;
+        }
+
+        nav {
+            display: flex;
+            gap: 40px;
+        }
+
+        nav a {
+            color: #FFFFFF;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            transition: opacity 0.3s;
+        }
+
+        nav a:hover {
+            opacity: 0.7;
+        }
+
+        nav a.active {
+            font-weight: 400;
+        }
+
+        /* ヒーローセクション */
+        .hero-section {
+            width: 100%;
+            height: 753px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #000;
+        }
+
+        .hero-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 1;
+        }
+
+        .hero-gradient {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 108px;
+            background: linear-gradient(0deg, rgba(22, 14, 11, 1) 0%, rgba(22, 14, 11, 0) 100%);
+            z-index: 2;
+        }
+
+        .hero-text {
+            position: relative;
+            z-index: 3;
+            text-align: center;
+        }
+
+        .hero-text h1 {
+            font-size: 32px;
+            font-weight: 500;
+            color: #000000;
+            letter-spacing: 0.2em;
+            line-height: 1.5em;
+            margin-bottom: 48px;
+        }
+
+        .hero-logo {
+            position: absolute;
+            top: 91px;
+            left: 280px;
+            width: 180px;
+            height: 501px;
+            z-index: 3;
+        }
+
+        .hero-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        /* ニュースセクション */
+        .news-section {
+            width: 100%;
+            min-height: 853px;
+            position: relative;
+            background-image: url('img/back 2.png');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+        }
+
+        .news-content {
+            width: 100%;
+            max-width: var(--content-width);
+            position: relative;
+            min-height: 853px;
+        }
+
+        .news-image-container {
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 679px;
+            height: 853px;
+        }
+
+        .news-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .news-badge {
+            position: absolute;
+            left: 621px;
+            bottom: 0;
+            height: 72px;
+            background-color: transparent;
+            padding-left: 32px;
+            padding-right: 40px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            z-index: 1000;
+        }
+
+        .news-badge-new {
+            background-color: transparent;
+            color: #FFFFFF;
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            font-family: 'Hiragino Sans', sans-serif;
+        }
+
+        .news-badge-date {
+            color: #FFFFFF;
+            font-size: 10px;
+            font-weight: 300;
+            letter-spacing: 0.1em;
+            font-family: 'Hiragino Sans', sans-serif;
+        }
+
+        .news-badge-text {
+            color: #FFFFFF;
+            font-size: 14px;
+            font-weight: 300;
+            letter-spacing: 0.1em;
+            font-family: 'Hiragino Sans', sans-serif;
+        }
+
+        /* 想いセクション */
+        .philosophy-section {
+            width: 100%;
+            min-height: 1097px;
+            position: relative;
+            background-color: #FFFFFF;
+            display: flex;
+            justify-content: center;
+        }
+
+        .philosophy-title-container {
+            position: absolute;
+            top: 216px;
+            left: 270px;
+            width: 247px;
+            height: 230px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .philosophy-title {
+            position: relative;
+            writing-mode: vertical-rl;
+            font-size: 32px;
+            font-weight: 500;
+            color: #000000;
+            letter-spacing: 0.2em;
+            line-height: 1.5em;
+            z-index: 2;
+        }
+
+        .philosophy-flower {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 247px;
+            height: 230px;
+            z-index: 1;
+        }
+
+        .philosophy-flower img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .philosophy-content {
+            position: absolute;
+            left: 221px;
+            bottom: 196px;
+            width: auto;
+        }
+
+        .philosophy-text {
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 2.5em;
+            color: #000000;
+            max-width: 448px;
+        }
+
+        /* 素材セクション */
+        .ingredients-section {
+            width: 100%;
+            height: 1614px;
+            background-color: #160E0B;
+            position: relative;
+            display: flex;
+            justify-content: center;
+        }
+
+        .ingredients-content {
+            width: 100%;
+            max-width: var(--content-width);
+            position: relative;
+            min-height: 1614px;
+            padding-top: 172px;
+        }
+
+        .ingredients-title {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            top: 180px;
+            font-size: 32px;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            color: #FFFFFF;
+            text-align: center;
+            line-height: 1.45em;
+            z-index: 2;
+        }
+
+        .ingredients-flower {
+            position: absolute;
+            left: 50%;
+            top: 120px;
+            transform: translateX(-50%);
+            width: 172px;
+            height: 161px;
+            z-index: 1;
+        }
+
+        .ingredients-flower img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .ingredients-nami {
+            position: absolute;
+            left: 114px;
+            bottom: 200px;
+        }
+
+        .ingredients-nami img {
+            display: block;
+        }
+
+        .ingredients-image-left {
+            position: absolute;
+            left: 0;
+            top: 423px;
+            width: 590px;
+            height: 529px;
+        }
+
+        .ingredients-content-right {
+            position: absolute;
+            right: var(--content-padding);
+            top: 423px;
+            max-width: 520px;
+        }
+
+        .ingredients-subtitle {
+            font-size: 28px;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            color: #FFFFFF;
+            margin-bottom: 40px;
+            line-height: 1.14em;
+        }
+
+        .ingredients-description {
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 3em;
+            color: #FFFFFF;
+        }
+
+        .ingredients-image-bottom {
+            position: absolute;
+            right: 0;
+            top: 803px;
+            width: 916px;
+            height: 611px;
+        }
+
+        .ingredients-overlay-left {
+            position: absolute;
+            right: 792px;
+            top: 803px;
+            width: 124px;
+            height: 611px;
+            background: linear-gradient(90deg, rgba(22, 14, 11, 1) 0%, rgba(22, 14, 11, 0) 100%);
+        }
+
+        .ingredients-overlay-top {
+            position: absolute;
+            right: 0;
+            top: 803px;
+            width: 916px;
+            height: 97px;
+            background: linear-gradient(0deg, rgba(22, 14, 11, 0) 0%, rgba(22, 14, 11, 1) 100%);
+        }
+
+        .ingredients-overlay-bottom {
+            position: absolute;
+            right: 0;
+            top: 1328px;
+            width: 916px;
+            height: 86px;
+            background: linear-gradient(0deg, rgba(22, 14, 11, 1) 0%, rgba(22, 14, 11, 0) 100%);
+        }
+
+        /* 会員制セクション */
+        .membership-section {
+            width: 100%;
+            min-height: 794px;
+            position: relative;
+            background-image: url('img/DSC04578 1.png');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+        }
+
+        .membership-inner {
+            width: var(--content-width);
+            position: relative;
+            min-height: 794px;
+        }
+
+        .membership-overlay-top {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 338px;
+            background: linear-gradient(0deg, rgba(22, 14, 11, 0) 0%, rgba(22, 14, 11, 1) 100%);
+        }
+
+        .membership-overlay-bottom {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 338px;
+            background: linear-gradient(0deg, rgba(22, 14, 11, 1) 0%, rgba(22, 14, 11, 0) 100%);
+        }
+
+        .membership-content {
+            position: absolute;
+            bottom: 50px;
+            left: var(--content-padding);
+            z-index: 10;
+        }
+
+        .membership-title {
+            position: absolute;
+            top: 175px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 32px;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            color: #FFFFFF;
+            text-align: center;
+            line-height: 1.45em;
+            z-index: 2;
+        }
+
+        .membership-flower {
+            position: absolute;
+            left: 50%;
+            top: 115px;
+            transform: translateX(-50%);
+            width: 172px;
+            height: 161px;
+            z-index: 1;
+        }
+
+        .membership-flower img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .membership-subtitle {
+            font-size: 28px;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            color: #FFFFFF;
+            margin-bottom: 40px;
+            line-height: 1.43em;
+        }
+
+        .membership-description {
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 3em;
+            color: #FFFFFF;
+            max-width: 441px;
+        }
+
+        /* 空間セクション */
+        .space-section {
+            width: 100%;
+            height: 2194px;
+            position: relative;
+            background-image: url('img/back 1.png');
+            background-repeat: repeat-y;
+            background-size: 100% auto;
+            background-position: top center;
+            padding: 120px 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .space-inner {
+            width: var(--content-width);
+            position: relative;
+        }
+
+        .space-content {
+            padding: 0 var(--content-padding);
+        }
+
+        .space-title {
+            font-size: 32px;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            color: #000000;
+            margin-bottom: 80px;
+            line-height: 1.43em;
+        }
+
+        .space-subtitle {
+            font-size: 28px;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            color: #000000;
+            margin-bottom: 40px;
+            line-height: 1.43em;
+        }
+
+        .space-capacity {
+            font-size: 20px;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            color: #000000;
+            margin-bottom: 24px;
+            line-height: 2em;
+        }
+
+        .space-description {
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 3em;
+            color: #000000;
+            margin-bottom: 80px;
+            max-width: 505px;
+        }
+
+        .space-description-room {
+            position: absolute;
+            top: 535px;
+            right: 274px;
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 3em;
+            color: #000000;
+            max-width: 505px;
+        }
+
+        .space-capacity-six {
+            position: absolute;
+            top: 872px;
+            left: 622px;
+            width: 244px;
+            padding: 12px;
+            font-size: 20px;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            color: #000000;
+            line-height: 2em;
+            border-bottom: 1px solid #000000;
+            text-align: right;
+            box-sizing: border-box;
+        }
+
+        .space-capacity-eight {
+            position: absolute;
+            top: 1185px;
+            left: 489px;
+            width: 198px;
+            padding: 12px;
+            font-size: 20px;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            color: #000000;
+            line-height: 2em;
+            border-bottom: 1px solid #000000;
+            text-align: left;
+            box-sizing: border-box;
+        }
+
+        .space-capacity-fourteen {
+            position: absolute;
+            top: 1851px;
+            left: 865px;
+            width: 244px;
+            padding: 12px;
+            font-size: 20px;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            color: #000000;
+            line-height: 2em;
+            border-bottom: 1px solid #000000;
+            text-align: right;
+            box-sizing: border-box;
+        }
+
+        .space-image-main {
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 629.59px;
+            height: 420px;
+        }
+
+        .space-image-main img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .space-images-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            margin-top: 120px;
+        }
+
+        .space-image-item {
+            position: absolute;
+            top: 535px;
+            left: 119px;
+            width: 503px;
+            height: 587px;
+            object-fit: cover;
+        }
+
+        .space-image-wide {
+            position: absolute;
+            right: 0;
+            top: 1095px;
+            width: 753px;
+            height: 544px;
+            object-fit: cover;
+            z-index: 3;
+        }
+
+        .space-image-tall {
+            position: absolute;
+            left: 0;
+            top: 1573px;
+            width: 865px;
+            height: 580px;
+            object-fit: cover;
+            z-index: 2;
+        }
+
+        /* アクセスセクション */
+        .access-section {
+            width: 100%;
+            min-height: 470px;
+            position: relative;
+            background-image: url('img/back 3.png');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            z-index: 1;
+        }
+
+        .access-inner {
+            width: var(--content-width);
+            position: relative;
+            padding: 120px var(--content-padding);
+        }
+
+        .access-title {
+            position: absolute;
+            bottom: 182px;
+            left: var(--content-padding);
+            font-size: 32px;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            color: #000000;
+            line-height: 1.45em;
+        }
+
+        .access-address {
+            position: absolute;
+            bottom: 102px;
+            left: var(--content-padding);
+            font-size: 18px;
+            font-weight: 500;
+            line-height: 2.22em;
+            color: #000000;
+            max-width: 480px;
+        }
+
+        .access-contact {
+            position: absolute;
+            bottom: 102px;
+            right: var(--content-padding);
+            width: 481px;
+            height: 82px;
+            background-color: transparent;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 24px;
+            border-left: 1px solid #000000;
+        }
+
+        .access-contact-label {
+            font-size: 18px;
+            font-weight: 500;
+            line-height: 2.22em;
+            color: #000000;
+        }
+
+        .access-contact-phone {
+            font-size: 32px;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            color: #000000;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .phone-icon {
+            width: 20px;
+            height: 20px;
+        }
+
+        /* お知らせセクション */
+        .notice-section {
+            width: 100%;
+            background-color: #000000;
+            display: flex;
+            justify-content: center;
+        }
+
+        .notice-inner {
+            width: var(--content-width);
+            padding: 120px var(--content-padding);
+            display: flex;
+            align-items: flex-start;
+            gap: 40px;
+        }
+
+        .notice-title {
+            font-size: 32px;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            color: #FFFFFF;
+            line-height: 1.45em;
+            width: 400px;
+        }
+
+        .notice-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            flex: 1;
+        }
+
+        .notice-item {
+            border-top: 0.5px solid #FFFFFF;
+            padding: 32px 0;
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            width: 750px;
+        }
+
+        .notice-item:last-child {
+            border-bottom: 0.5px solid #FFFFFF;
+        }
+
+        .notice-date {
+            font-size: 10px;
+            font-weight: 300;
+            letter-spacing: 0.1em;
+            color: #FFFFFF;
+            font-family: 'Hiragino Sans', sans-serif;
+        }
+
+        .notice-text {
+            font-size: 14px;
+            font-weight: 300;
+            letter-spacing: 0.1em;
+            color: #FFFFFF;
+            font-family: 'Hiragino Sans', sans-serif;
+        }
+
+        /* フッター */
+        footer {
+            width: 100%;
+            background-color: #000000;
+            display: flex;
+            justify-content: center;
+        }
+
+        .footer-inner {
+            width: var(--content-width);
+            padding: 0 var(--content-padding) 52px;
+            margin-top: -39px;
+            position: relative;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 80px;
+            margin-bottom: 80px;
+            align-items: end;
+        }
+
+        .footer-hours h3,
+        .footer-closed h3 {
+            font-size: 16px;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            color: #FFFFFF;
+            margin-bottom: 16px;
+            font-family: 'Hiragino Sans', sans-serif;
+            line-height: 1.7em;
+        }
+
+        .footer-hours p,
+        .footer-closed p {
+            font-size: 24px;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            color: #FFFFFF;
+            line-height: 1.7em;
+        }
+
+        .footer-contact h3 {
+            font-size: 18px;
+            font-weight: 500;
+            line-height: 2.22em;
+            color: #000000;
+            margin-bottom: 8px;
+        }
+
+        .footer-phone {
+            font-size: 32px;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            color: #000000;
+            margin-bottom: 24px;
+        }
+
+        .footer-address {
+            font-size: 18px;
+            font-weight: 500;
+            line-height: 2.22em;
+            color: #000000;
+        }
+
+        .footer-logo {
+            width: 145.92px;
+            height: 380.16px;
+            display: block;
+            margin-bottom: -80px;
+        }
+
+        .footer-image {
+            position: absolute;
+            width: 325px;
+            height: 442px;
+            left: calc(50% + 145.92px/2 + 204px);
+            bottom: 0;
+            object-fit: cover;
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 32px;
+            border-top: 0.5px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .footer-copyright {
+            font-size: 10px;
+            font-weight: 300;
+            color: #FFFFFF;
+            font-family: 'Hiragino Sans', sans-serif;
+            line-height: 1.5em;
+        }
+
+        .footer-pagetop {
+            font-size: 10px;
+            font-weight: 300;
+            color: #FFFFFF;
+            font-family: 'Hiragino Sans', sans-serif;
+            text-decoration: none;
+            line-height: 1.5em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: opacity 0.3s;
+        }
+
+        .footer-pagetop:hover {
+            opacity: 0.7;
+        }
+
+        .footer-pagetop::after {
+            content: '↑';
+            font-size: 14px;
+        }
+
+        /* スムーススクロール */
+    </style>
+</head>
+<body>
+    <!-- ヒーローセクション -->
+    <section class="hero-section">
+        <img src="img/DSC04297 1.png" class="hero-image">
+        <div class="hero-gradient"></div>
+        <!-- ロゴ -->
+        <div class="hero-logo">
+            <img src="img/shihouan_logo.png" alt="紫芳庵">
+        </div>
+        <!-- ヘッダー -->
+        <header>
+            <div class="header-content">
+                <nav>
+                    <a href="#philosophy" class="active">料亭の想い</a>
+                    <a href="#ingredients">素材</a>
+                    <a href="#space">空間</a>
+                    <a href="#access">アクセス</a>
+                </nav>
+            </div>
+        </header>
+        <!-- NEWSバッジ -->
+        <div class="news-badge">
+            <span class="news-badge-new">NEW</span>
+            <span class="news-badge-date">2025/11/01</span>
+            <span class="news-badge-text">秋のメニューをぜひご賞味ください。</span>
+        </div>
+    </section>
+
+    <!-- ニュースセクション -->
+    <section id="philosophy" class="news-section">
+        <div class="news-image-container">
+            <img src="img/DSC04227 1.png" alt="秋のメニュー" class="news-image">
+        </div>
+        <div class="news-content">
+            <div class="philosophy-title-container">
+                <div class="philosophy-flower">
+                    <img src="img/flower1.png" alt="花">
+                </div>
+                <h2 class="philosophy-title">紡ぐ想いを<br>大切に</h2>
+            </div>
+            <div class="philosophy-content">
+                <p class="philosophy-text">
+                    紡がれ、受け継がれてきた思いを大切に<br>
+                    伝統を守りながらも時代の先駆けとして<br>
+                    新たなしつらえを施し、また新たな歴史を刻む。<br>
+                    都心の隠れ家で、お一人おひとりを大切にお迎えいたします。
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 素材セクション -->
+    <section id="ingredients" class="ingredients-section">
+        <div class="ingredients-content">
+            <div class="ingredients-flower">
+                <img src="img/Flower2.png" alt="花">
+            </div>
+            <h2 class="ingredients-title">素材へのこだわり</h2>
+
+            <div class="ingredients-image-left">
+                <img src="img/TP2_1546 1.png" alt="食材">
+            </div>
+            
+            <div class="ingredients-content-right">
+                <h3 class="ingredients-subtitle">四季を彩る、選び抜かれた食材</h3>
+                <p class="ingredients-description">
+                    石垣島の希少な美崎牛をはじめ、<br>
+                    旬の恵みを生かした料理を、最も良いタイミングで。<br>
+                    生産者の想いを汲み取り、素材の旨みを最大限に引き出す一皿を。<br>
+                    ここでしか味わえない余韻をご堪能ください。
+                </p>
+            </div>
+
+            <div class="ingredients-image-bottom">
+                <img src="img/TP2_1515 1.png" alt="料理">
+            </div>
+            <div class="ingredients-overlay-left"></div>
+            <div class="ingredients-overlay-top"></div>
+            <div class="ingredients-overlay-bottom"></div>
+            <div class="ingredients-nami">
+                <img src="img/nami.png" alt="波">
+            </div>
+        </div>
+    </section>
+
+    <!-- 会員制セクション -->
+    <section class="membership-section">
+        <div class="membership-overlay-top"></div>
+        <div class="membership-overlay-bottom"></div>
+        <div class="membership-inner">
+            <div class="membership-flower">
+                <img src="img/Flower2.png" alt="花">
+            </div>
+            <h2 class="membership-title">会員制の特別空間</h2>
+            <div class="membership-content">
+                <h3 class="membership-subtitle">会員様だけに開かれる庵</h3>
+                <p class="membership-description">
+                    「紫芳庵」は住所を公開せず、会員制で運営しております。<br>
+                    年間会員費をお納めいただいた方のみがご利用可能。<br>
+                    静かで落ち着いた時間をお過ごしいただけます。
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 空間セクション -->
+    <section id="space" class="space-section">
+        <div class="space-inner">
+            <div class="space-content">
+                <h2 class="space-title">和の趣が息づく空間</h2>
+                
+                <div>
+                    <p class="space-description">
+                        7席のL字型カウンターでは、板前の所作を間近に。<br>
+                        個室は6名様・8名様用をご用意し、接待や大切な会食に最適です。<br>
+                        組子細工の扉と柔らかな灡りが織りなす空間で、特別なひとときを。
+                    </p>
+                </div>
+                <h3 class="space-capacity-fourteen">14名様まで</h3>
+
+                <div class="space-image-main">
+                    <img src="img/DSC04591 1.png" alt="店内">
+                </div>
+            </div>
+
+            <div style="padding: 0 var(--content-padding); margin-top: 600px;">
+                <p class="space-description-room">
+                    白木の格子戸に和モダンな雰囲気のテーブル席個室を<br>
+                    お人数にお合わせしてご用意致しております。<br>
+                    ご接待や晴れの日など大切な方々とのご会食のシーンを<br>
+                    プライベートな空間でおくつろぎいただけます。
+                </p>
+                <h3 class="space-capacity-six">6名様まで</h3>
+                <h3 class="space-capacity-eight">8名様まで</h3>
+
+                <div class="space-images-grid">
+                    <div>
+                        <img src="img/IMG_8751 1.png" alt="個室1" class="space-image-item">
+                    </div>
+                <div>
+                    <img src="img/IMG_8761 1.png" alt="個室2" class="space-image-wide">
+                </div>
+            </div>
+
+            <div style="margin-top: 40px;">
+                <img src="img/IMG_8732 1.png" alt="カウンター" class="space-image-tall">
+            </div>
+        </div>
+        </div>
+    </section>
+
+    <!-- アクセスセクション -->
+    <section id="access" class="access-section">
+        <div class="access-inner">
+            <h2 class="access-title">アクセス</h2>
+            <div class="access-address">
+                住所:非公開<br>
+                JR田町駅東口より徒歩7分、都営浅草線 三田駅より徒歩8分
+            </div>
+            <div class="access-contact">
+                <span class="access-contact-label">お問い合わせ</span>
+                <span class="access-contact-phone">
+                    <svg class="phone-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" fill="#000000"/>
+                    </svg>
+                    03-6435-1320
+                </span>
+            </div>
+        </div>
+    </section>
+
+    <!-- お知らせセクション -->
+    <section class="notice-section">
+        <div class="notice-inner">
+            <h2 class="notice-title"><a href="news.html" style="color: #FFFFFF; text-decoration: none;">お知らせ</a></h2>
+            <ul class="notice-list">
+                <li class="notice-item">
+                    <span class="notice-date">2025/11/01</span>
+                    <span class="notice-text">秋のメニューをぜひご賞味ください。</span>
+                </li>
+                <li class="notice-item">
+                    <span class="notice-date">2025/11/01</span>
+                    <span class="notice-text">秋のメニューをぜひご賞味ください。</span>
+                </li>
+                <li class="notice-item">
+                    <span class="notice-date">2025/11/01</span>
+                    <span class="notice-text">秋のメニューをぜひご賞味ください。</span>
+                </li>
+                <li class="notice-item">
+                    <span class="notice-date">2025/11/01</span>
+                    <span class="notice-text">秋のメニューをぜひご賞味ください。</span>
+                </li>
+                <li class="notice-item">
+                    <span class="notice-date">2025/11/01</span>
+                    <span class="notice-text">秋のメニューをぜひご賞味ください。</span>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- フッター -->
+    <footer>
+        <div class="footer-inner">
+            <img src="img/DSC04608.png" alt="" class="footer-image">
+            <div class="footer-content">
+                <div>
+                    <div class="footer-hours">
+                        <h3>営業時間</h3>
+                        <p>17:00-22:30</p>
+                    </div>
+                    <div class="footer-closed" style="margin-top: 64px;">
+                        <h3>定休日</h3>
+                        <p>日月祝</p>
+                    </div>
+                </div>
+                <img src="img/shihouan_logo.png" alt="紫芳庵" class="footer-logo">
+                <div>
+                    <div class="footer-contact" style="margin-bottom: 48px; color: #000;">
+                        <h3 style="color: #000;">お問い合わせ</h3>
+                        <div class="footer-phone" style="color: #000;">03-6435-1320</div>
+                    </div>
+                    <div class="footer-address" style="color: #000;">
+                        住所:非公開<br>
+                        JR田町駅東口より徒歩7分、都営浅草線 三田駅より徒歩8分
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="footer-copyright">Copyright Yokohama Warehouse CO.,LTD All rights reserved</p>
+                <a href="#" class="footer-pagetop">Page top</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

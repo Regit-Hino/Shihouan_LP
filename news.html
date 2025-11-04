@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>お知らせ - NEWS詳細</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;600&family=Noto+Serif+JP:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Serif JP', serif;
+            background: #FFFFFF;
+            width: 1440px;
+            margin: 0 auto;
+        }
+
+        /* Header Navigation */
+        .header-nav {
+            width: 1440px;
+            height: 72px;
+            background: #FFFFFF;
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 40px;
+            margin-left: 200px;
+            align-items: center;
+        }
+
+        .nav-menu a {
+            font-family: 'Noto Serif JP', serif;
+            font-weight: 600;
+            font-size: 14px;
+            line-height: 1.7em;
+            letter-spacing: 0.2em;
+            color: #000000;
+            text-decoration: none;
+        }
+
+        .nav-menu a.active {
+            font-weight: 600;
+        }
+
+        .nav-menu a:not(.active) {
+            font-weight: 400;
+        }
+
+        /* Logo Header */
+        .logo-header {
+            position: absolute;
+            left: 200px;
+            top: 91px;
+            width: 180px;
+            height: 501px;
+        }
+
+        .logo-placeholder {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #C9BC9C 0%, #8B7E6A 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            color: #FFFFFF;
+            text-align: center;
+            padding: 20px;
+        }
+
+        /* Main Content Area */
+        .main-content {
+            position: relative;
+            width: 1440px;
+            height: 2809px;
+        }
+
+        /* Background Images */
+        .back-5 {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 1440px;
+            height: 1014px;
+            background: linear-gradient(180deg, rgba(240,240,240,0.3) 0%, rgba(255,255,255,0.8) 100%);
+        }
+
+        .back-1 {
+            position: absolute;
+            left: 1px;
+            top: 1014px;
+            width: 1440px;
+            height: 1097px;
+            background: linear-gradient(180deg, rgba(255,255,255,0.8) 0%, rgba(240,240,240,0.3) 100%);
+        }
+
+        .back-4 {
+            position: absolute;
+            left: 0;
+            top: 2111px;
+            width: 1440px;
+            height: 1066px;
+            background: linear-gradient(180deg, rgba(240,240,240,0.3) 0%, rgba(255,255,255,0.9) 100%);
+        }
+
+        /* Content Container */
+        .content-container {
+            position: absolute;
+            left: 540px;
+            top: 152px;
+            width: 700px;
+        }
+
+        /* Page Title */
+        .page-title {
+            font-family: 'Noto Serif JP', serif;
+            font-weight: 500;
+            font-size: 56px;
+            line-height: 1.4em;
+            letter-spacing: 0.1em;
+            color: #000000;
+            margin-bottom: 64px;
+        }
+
+        /* Article Date */
+        .article-date {
+            font-family: 'Noto Sans JP', sans-serif;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 1.2em;
+            color: #222222;
+            margin-bottom: 24px;
+        }
+
+        /* Article Title */
+        .article-title {
+            font-family: 'Noto Serif JP', serif;
+            font-weight: 600;
+            font-size: 24px;
+            line-height: 1.7em;
+            letter-spacing: 0.1em;
+            color: #000000;
+            margin-bottom: 40px;
+        }
+
+        /* Article Body */
+        .article-body {
+            font-family: 'Noto Serif JP', serif;
+            font-weight: 300;
+            font-size: 16px;
+            line-height: 1.75em;
+            color: #000000;
+            margin-bottom: 40px;
+        }
+
+        /* Image Placeholder */
+        .image-large {
+            width: 700px;
+            height: 480px;
+            background: #D9D9D9;
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-size: 14px;
+        }
+
+        /* Section Header with Accent */
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            width: 700px;
+            height: 32px;
+            margin-bottom: 32px;
+        }
+
+        .section-accent {
+            width: 3px;
+            height: 26px;
+            background: #C9BC9C;
+        }
+
+        .section-title {
+            font-family: 'Noto Serif JP', serif;
+            font-weight: 600;
+            font-size: 20px;
+            line-height: 2em;
+            letter-spacing: 0.1em;
+            color: #000000;
+        }
+
+        /* Image Grid */
+        .image-grid {
+            display: flex;
+            gap: 26px;
+            margin-bottom: 40px;
+        }
+
+        .image-small {
+            width: 337px;
+            height: 337px;
+            background: #D9D9D9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-size: 14px;
+        }
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: absolute;
+            left: 567px;
+            top: 1980px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            cursor: pointer;
+        }
+
+        .back-to-top-text {
+            font-family: 'Noto Serif JP', serif;
+            font-weight: 700;
+            font-size: 20px;
+            line-height: 1.6em;
+            letter-spacing: 0.05em;
+            color: #000000;
+        }
+
+        .back-to-top-line {
+            width: 166.5px;
+            height: 1px;
+            background: #000000;
+        }
+
+        /* Footer Section */
+        .footer-section {
+            position: absolute;
+            left: 0;
+            top: 2234px;
+            width: 1440px;
+            height: 575px;
+            background: #000000;
+        }
+
+        .footer-content {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Footer Info */
+        .footer-info {
+            position: absolute;
+            left: 225px;
+            top: 255px;
+        }
+
+        .info-label {
+            font-family: 'Noto Sans JP', sans-serif;
+            font-weight: 600;
+            font-size: 16px;
+            line-height: 1.7em;
+            letter-spacing: 0.1em;
+            color: #FFFFFF;
+            margin-bottom: 8px;
+        }
+
+        .info-value {
+            font-family: 'Noto Serif JP', serif;
+            font-weight: 600;
+            font-size: 24px;
+            line-height: 1.7em;
+            color: #FFFFFF;
+            margin-bottom: 32px;
+        }
+
+        /* Footer Logo */
+        .footer-logo {
+            position: absolute;
+            left: 647px;
+            top: 114px;
+            width: 145.92px;
+            height: 380.16px;
+            background: linear-gradient(135deg, #C9BC9C 0%, #8B7E6A 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            color: #FFFFFF;
+        }
+
+        /* Footer Image */
+        .footer-image {
+            position: absolute;
+            right: 119px;
+            top: 133px;
+            width: 325px;
+            height: 442px;
+            background: #D9D9D9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-size: 14px;
+        }
+
+        /* Copyright */
+        .copyright {
+            position: absolute;
+            left: 225px;
+            top: 523px;
+            font-family: 'Noto Sans JP', sans-serif;
+            font-weight: 300;
+            font-size: 10px;
+            line-height: 1.5em;
+            color: #FFFFFF;
+        }
+
+        /* Hidden overflow placeholder beyond canvas */
+        .overflow-placeholder {
+            position: absolute;
+            left: 1558px;
+            top: -92px;
+            width: 496px;
+            height: 456px;
+            background: #D9D9D9;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Navigation -->
+    <div class="header-nav">
+        <nav class="nav-menu">
+            <a href="index.html" class="active">料亭の想い</a>
+            <a href="index.html#ingredients">素材</a>
+            <a href="index.html#space">空間</a>
+            <a href="index.html#access">アクセス</a>
+        </nav>
+    </div>
+
+    <!-- Logo Header -->
+    <div class="logo-header">
+        <div class="logo-placeholder">_デザイン<br>ロゴ</div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Background Layers -->
+        <div class="back-5"></div>
+        <div class="back-1"></div>
+        <div class="back-4"></div>
+
+        <!-- Overflow Placeholder (outside main view) -->
+        <div class="overflow-placeholder"></div>
+
+        <!-- Content Container -->
+        <div class="content-container">
+            <!-- Page Title -->
+            <h1 class="page-title">お知らせ</h1>
+
+            <!-- Article Date -->
+            <div class="article-date">2025年9月15日</div>
+
+            <!-- Article Title -->
+            <h2 class="article-title">秋のメニューをぜひご賞味ください。</h2>
+
+            <!-- Article Body - First Section -->
+            <div class="article-body">
+                〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇
+            </div>
+
+            <!-- Large Image -->
+            <div class="image-large">画像プレースホルダー (700 × 480px)</div>
+
+            <!-- Section Header -->
+            <div class="section-header">
+                <div class="section-accent"></div>
+                <h3 class="section-title">h2h2h2h2h2h2h2h2h2</h3>
+            </div>
+
+            <!-- Article Body - Second Section -->
+            <div class="article-body">
+                〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇
+            </div>
+
+            <!-- Image Grid -->
+            <div class="image-grid">
+                <div class="image-small">画像プレースホルダー<br>(337 × 337px)</div>
+                <div class="image-small">画像プレースホルダー<br>(337 × 337px)</div>
+            </div>
+        </div>
+
+        <!-- Back to Top Button -->
+        <a href="index.html" class="back-to-top">
+            <span class="back-to-top-text">TOPへ戻る</span>
+        </a>
+        <div class="back-to-top-line" style="position: absolute; left: 540px; top: 2023px;"></div>
+
+        <!-- Footer Section -->
+        <div class="footer-section">
+            <div class="footer-content">
+                <!-- Footer Info -->
+                <div class="footer-info">
+                    <div class="info-label">営業時間</div>
+                    <div class="info-value">17:00-22:30</div>
+                    <div class="info-label">定休日</div>
+                    <div class="info-value">日月祝</div>
+                </div>
+
+                <!-- Footer Logo -->
+                <div class="footer-logo">
+                    _デザイン<br>ロゴ
+                </div>
+
+                <!-- Footer Image -->
+                <div class="footer-image">
+                    レストラン外観<br>画像
+                </div>
+
+                <!-- Copyright -->
+                <div class="copyright">
+                    Copyright Yokohama Warehouse CO.,LTD All rights reserved
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
